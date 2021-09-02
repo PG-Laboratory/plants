@@ -2,15 +2,21 @@ var presets = {
     default: {
         treeCount: 1,
         seed: "A tree.",
-        baseWidth: 30,
+        baseWidth: 25,
+        branchOverwidth: 0,
         lengthWidthRatio: 5,
         lengthConstant: 20,
-        lengthRandomness: 0.3,
+        lengthRandomness: 1,
         bendiness: 0.3,
-        angleSpan: 60,
+        angleSpan: 30,
         spanRandomness: 30,
         angleRandomness: 20,
-        widthRandomness: 0.5,
-        branchCount: 3
+        widthRandomness: 1.3,
+        branchCount: 2,
+        gravity: 0,
+        minWidth: 0.07,
+        maxDepth: 15,
+        stemAngle: 0,
+        stemWeight: 0,
     }
 };

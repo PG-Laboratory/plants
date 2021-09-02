@@ -1,63 +1,63 @@
-
 @import url(openSansFont/OpenSans.css);
 
-*{
+* {
 	margin: 0px;
 	padding: 0px;
 	border: none;
 }
 
-body, html{
+body,
+html {
 	height: 100%;
 }
 
-body{
+body {
 	font-family: OpenSans, sans-serif;
 	overflow: hidden;
 	background-color: #000000;
 }
 
-a{
+a {
 	text-decoration: none;
 	color: #0055FF;
 }
 
-a:hover{
+a:hover {
 	text-decoration: underline;
 }
 
-h1{
+h1 {
 	font-weight: 200;
 	line-height: 1em;
 }
 
-#container{
+#container {
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	bottom: 20px;
-	right: 350px;
+	right: 370px;
 	box-sizing: border-box;
 	background-color: #FFFFFF;
 }
 
-canvas{
+canvas {
 	display: block;
 }
 
-#controlsContainer{
+#controlsContainer {
 	position: absolute;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
-	width: 350px;
+	width: 370px;
 	box-sizing: border-box;
 	border-left: 1px #000000 solid;
 	background-color: #F6F8FF;
 	padding: 10px;
 }
 
-#controls{
+#controls {
 	position: absolute;
 	top: 70px;
 	bottom: 60px;
@@ -66,7 +66,7 @@ canvas{
 	overflow: auto;
 }
 
-#footer{
+#footer {
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
@@ -74,15 +74,18 @@ canvas{
 	padding: 10px;
 }
 
-.control{
-	margin: 3px 0px;
-	padding: 2px 0px;
+.control {
+	padding: 5px;
 }
 
-.control:nth-child(2n){
+.control:nth-child(2n) {
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
-.control input{
+.control:nth-child(2n+1) {
+	background-color: rgba(0, 128, 255, 0.05);
+}
+
+.control input {
 	float: right;
 }
