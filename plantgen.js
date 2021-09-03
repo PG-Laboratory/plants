@@ -1,11 +1,10 @@
-
 var Plantgen = new function () {
     var canvas = document.getElementById("canvas");
     canvas.width = document.getElementById("container").offsetWidth;
     canvas.height = document.getElementById("container").offsetHeight;
     var context = canvas.getContext("2d");
 
-    var rand = function () { };
+    var rand = function () {};
     var trees = [];
 
     var config = presets.default;
@@ -22,20 +21,17 @@ var Plantgen = new function () {
 
             var baseWidth = config.baseWidth + config.baseWidth * (rand() - 0.5) * config.widthRandomness;
 
-            trees.push(
-                {
-                    structure: {
-                        angle: 0,
-                        width: baseWidth,
-                        len:
-                            baseWidth * config.lengthWidthRatio
-                            + baseWidth * config.lengthWidthRatio * ((rand() - 0.5) * config.lengthRandomness)
-                            + config.lengthConstant,
-                        centerOffset: 0,
-                        isRoot: true
-                    }
+            trees.push({
+                structure: {
+                    angle: 0,
+                    width: baseWidth,
+                    len: baseWidth * config.lengthWidthRatio +
+                        baseWidth * config.lengthWidthRatio * ((rand() - 0.5) * config.lengthRandomness) +
+                        config.lengthConstant,
+                    centerOffset: 0,
+                    isRoot: true
                 }
-            );
+            });
 
             totalBranchCount += generateStructure(trees[i]);
         }
@@ -184,9 +180,12 @@ var Plantgen = new function () {
         var gravityAttack = Math.sin(up + branch.angle);
 
         // fancy physics calculations for how much gravity bends the branch
-        var i_y = (Math.PI / 4) * Math.pow(branch.width + 1, 4);
+        var branchWeight = Math.PI * Math.pow((branch.width) / 2, 2) * (branch.len) * config.density;
+        branchWeight = branchWeight / 1000; // g to kg
 
-        var bendDistance = ((config.gravity * gravityAttack) * Math.pow(gravityAttack * branch.len, 3)) / (3 * config.elasticity * i_y);
+        var i_y = (Math.PI / 4) * Math.pow(branch.width, 4) * 10e-8;
+
+        var bendDistance = ((config.gravity * gravityAttack * (branchWeight / 2)) * Math.pow(gravityAttack * (branch.len / 100), 3)) / (3 * config.elasticity * i_y);
 
         var originalY = Math.cos(up + branch.angle) * branch.len;
         var newY = originalY - bendDistance;
