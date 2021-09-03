@@ -181,7 +181,18 @@ var Plantgen = new function () {
 
         context.save();
 
-        var rotation = branch.angle + (config.gravity * (0 - up));
+        var gravityAttack = Math.sin(up + branch.angle);
+
+        // fancy physics calculation for how much gravity bends the branch
+        var i_y = (Math.PI / 4) * Math.pow(branch.width + 1, 4);
+
+        var bendDistance = ((config.gravity * gravityAttack) * Math.pow(gravityAttack * branch.len, 3)) / (3 * config.elasticity * i_y);
+
+        var originalY = Math.cos(up + branch.angle) * branch.len;
+        var bendY = originalY - bendDistance;
+        var newAngle = Math.atan((gravityAttack * branch.len) / bendY);
+
+        var rotation = newAngle;
 
         up = up + rotation;
 
@@ -212,6 +223,29 @@ var Plantgen = new function () {
         );
 
         context.stroke();
+
+        // Debug: Show lines
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = '#FF0000';
+        context.translate(start[0], start[1]);
+        context.rotate(0-up);
+        context.translate(0-start[0], 0-start[1]);
+        context.moveTo(
+                start[0]
+            ,start[1]
+        );
+        var debugY = start[1] - originalY;
+        context.lineTo(
+                targetX
+            ,debugY
+        );
+        context.translate(start[0], start[1]);
+        context.rotate(up);
+        context.translate(0-start[0], 0-start[1]);
+        context.stroke();
+        context.strokeStyle = '#000000';
+        // End Debug
 
         for (var i in branch.branches) {
             render(branch.branches[i], [targetX, targetY], up);
