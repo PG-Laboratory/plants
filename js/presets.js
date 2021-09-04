@@ -2,7 +2,7 @@ var presets = {
     default: {
         treeCount: 1,
         seed: "A tree.",
-        baseWidth: 25,
+        baseWidth: 15,
         branchOverwidth: 0.33,
         lengthWidthRatio: 5,
         lengthConstant: 20,
@@ -14,7 +14,7 @@ var presets = {
         widthRandomness: 1.3,
         branchCount: 2,
         gravity: 0,
-        minWidth: 0.2,
+        minWidth: 0.26,
         maxDepth: 13,
         stemAngle: 0,
         stemWeight: 0,
@@ -24,7 +24,8 @@ var presets = {
         animateWind: true,
         windSpeed: 0,
         windDirection: 270,
-        windTurbulence: 0.3
+        windTurbulence: 0.3,
+        branchLimit: 3000
         // Leaves
         //leafLength: 10
     },
