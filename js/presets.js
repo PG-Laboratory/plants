@@ -20,8 +20,12 @@ var presets = {
         stemWeight: 0,
         elasticity: 13,
         thinBranchStrength: 1,
-        keepStructure: true
+        keepStructure: true,
+        animateWind: false,
+        windSpeed: 0,
+        windDirection: 270,
+        windTurbulence: 0.3
         // Leaves
-		//leafLength: 10
-    }
+        //leafLength: 10
+    },
 };
